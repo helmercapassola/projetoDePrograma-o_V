@@ -19,4 +19,11 @@ interface ItemDao {
 
     @Delete
     suspend fun delete(item: Item)
+
+    //método para buscar por nome
+
+   @Query("SELECT * FROM items WHERE name LIKE :name ORDER BY createdAt DESC")
+  fun getByName(name: String): Flow<List<Item>>
+
+
 }
