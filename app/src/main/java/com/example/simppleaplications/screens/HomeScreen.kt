@@ -25,17 +25,23 @@ fun HomeScreen(onAdd: () -> Unit, onOpenDetail: (Long) -> Unit, vm: ItemViewMode
         LazyColumn(modifier = Modifier.padding(padding).fillMaxSize(), contentPadding = PaddingValues(16.dp)) {
             items(items) { item ->
                 Card(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
-                    Column(modifier = Modifier
+                    Column(
+                        modifier = Modifier
                         .fillMaxWidth()
                         .clickable { expandedId = if (expandedId == item.id) null else item.id }
                         .padding(12.dp)
                     ) {
                         Text(item.title, style = MaterialTheme.typography.titleMedium)
                         Spacer(Modifier.height(6.dp))
-                        if (item.imageUri != null) {
-                            AsyncImage(model = item.imageUri, contentDescription = null, modifier = Modifier.height(160.dp).fillMaxWidth())
+                       if (item.imageUri != null) {
+                            AsyncImage(
+                                model = item.imageUri,
+                                contentDescription = null,
+                                modifier = Modifier.height(160.dp).fillMaxWidth()
+                            )
                             Spacer(Modifier.height(6.dp))
                         }
+
                         if (expandedId == item.id) {
                             Text(item.description)
                             Spacer(Modifier.height(8.dp))
